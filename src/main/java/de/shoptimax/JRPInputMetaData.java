@@ -31,7 +31,7 @@ public class JRPInputMetaData implements PluginMetaData {
 
     @Override
     public URI getURL() {
-        return URI.create("https://github.com/https://github.com/smxsm/graylog-json-remote-poll");
+        return URI.create("https://github.com/smxsm/graylog-json-remote-poll");
     }
 
     @Override
