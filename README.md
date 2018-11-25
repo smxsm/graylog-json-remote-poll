@@ -54,6 +54,8 @@ All the fields in the message will be stored, here is an example message which c
 }
 ```
 
+As an example, you can use [my simple PHP script](https://github.com/smxsm/php-mysql-gelf) to make some MySQL variables available for polling.
+
 **Required Graylog version:** 2.0 and later
 
 Installation
