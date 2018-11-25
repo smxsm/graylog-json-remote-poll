@@ -61,7 +61,7 @@ As an example, you can use [my simple PHP script](https://github.com/smxsm/php-m
 Installation
 ------------
 
-[Download the plugin](https://github.com/https://github.com/smxsm/graylog-json-remote-poll/releases)
+[Download the plugin](https://github.com/smxsm/graylog-json-remote-poll/releases)
 and place the `.jar` file in your Graylog plugin directory. The plugin directory
 is the `plugins/` folder relative from your `graylog-server` directory by default
 and can be configured in your `graylog.conf` file.
