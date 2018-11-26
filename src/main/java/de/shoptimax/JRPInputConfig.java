@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.concurrent.TimeUnit;
 
 public class JRPInputConfig {
-    private String url,label,type,method,requestBody;
+    private String url,label;
     private String[] requestHeadersToSend;
     //Basic Auth
     private String username,password;
@@ -37,30 +37,6 @@ public class JRPInputConfig {
 
     public void setLabel(String label) {
         this.label = label;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    public String getRequestBody() {
-        return requestBody;
-    }
-
-    public void setRequestBody(String requestBody) {
-        this.requestBody = requestBody;
     }
 
     public String[] getRequestHeadersToSend() {

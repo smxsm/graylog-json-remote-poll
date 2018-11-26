@@ -56,7 +56,6 @@ public class JRPInputTransport implements Transport {
     private static final Logger LOGGER = LoggerFactory.getLogger(JRPInputTransport.class.getName());
     private static final String CK_CONFIG_URL = "configURL";
     private static final String CK_CONFIG_LABEL = "configLabel";
-    private static final String CK_CONFIG_REQUEST_BODY = "configRequestBody";
     private static final String CK_CONFIG_HEADERS_TO_SEND = "configHeadersToSend";
     private static final String CK_CONFIG_USER_NAME = "configUsername";
     private static final String CK_CONFIG_PASSWORD = "configPassword";
@@ -117,7 +116,6 @@ public class JRPInputTransport implements Transport {
         jrpConfig.setTimeoutUnit(TimeUnit.valueOf(configuration.getString(CK_CONFIG_TIMEOUT_UNIT)));
         jrpConfig.setIntervalUnit(TimeUnit.valueOf(configuration.getString(CK_CONFIG_INTERVAL_UNIT)));
 
-        jrpConfig.setRequestBody(configuration.getString(CK_CONFIG_REQUEST_BODY));
         jrpConfig.setLogResponseBody(configuration.getBoolean(CK_CONFIG_LOG_RESPONSE_BODY));
 
         String responseHeaders = configuration.getString(CK_CONFIG_HEADERS_TO_RECORD);
@@ -150,6 +148,7 @@ public class JRPInputTransport implements Transport {
                     new InetSocketAddress(proxyUri.getHost(), proxyUri.getPort()));
             httpClientBuilder.proxy(proxy);
         }
+        LOGGER.debug("HttpClient Builder configured.");
         this.httpClient = httpClientBuilder.build();
     }
 
@@ -328,13 +327,6 @@ public class JRPInputTransport implements Transport {
                     "Label",
                     "",
                     "Label to identify this request"));
-
-            cr.addField(new TextField(CK_CONFIG_REQUEST_BODY,
-                    "Request Body",
-                    "",
-                    "Request Body to send",
-                    ConfigurationField.Optional.OPTIONAL,
-                    TextField.Attribute.TEXTAREA));
 
             cr.addField(new TextField(CK_CONFIG_HEADERS_TO_SEND,
                     "Additional HTTP headers",
