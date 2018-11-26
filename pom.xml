@@ -95,11 +95,6 @@
             <version>${graylog.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.ning</groupId>
-            <artifactId>async-http-client</artifactId>
-            <version>1.9.40</version>
-        </dependency>
     </dependencies>
 
     <build>
