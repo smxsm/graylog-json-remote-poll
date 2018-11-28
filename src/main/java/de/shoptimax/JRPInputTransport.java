@@ -35,6 +35,7 @@ import java.net.URI;
 import java.net.URL;
 import java.net.Proxy;
 import java.net.InetSocketAddress;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.*;
 
@@ -255,19 +256,11 @@ public class JRPInputTransport implements Transport {
                     // String version = ctx.read("$.version");
 
                     Map<String, Object> map = mapper.readValue(json, new TypeReference<Map<String,Object>>(){});
-                    NumberFormat nf = NumberFormat.getInstance();
                     for (Map.Entry<String, Object> entry : map.entrySet()) {
                         String key = entry.getKey();
                         Object value = entry.getValue();
-                        try {
-                            // we have many numeric (custom) fields, so
-                            // try to convert to number, e.g. for "timestamp" and "level"
-                            LOGGER.debug("Parsing key <{}> and value {} to class {}", key, value.toString(), nf.parse(value.toString()).getClass().getName());
-                            eventdata.put(key, nf.parse(value.toString()));
-                        } catch (ParseException e) {
-                            // if failed, it is probably a string :)
-                            eventdata.put(key, value.toString());
-                        }
+                        LOGGER.debug("Storing field <{}> with value <{}>.", key, value);
+                        eventdata.put(key, value);
                     }
                 } catch (IOException e) {
                     eventdata.put("host", new URL(config.getUrl()).getHost());
